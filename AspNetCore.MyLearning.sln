@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6CACEB42-FF88-43E4-87BC-7BC9C6BD6F29}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsToolsForDocker", "VsToolsForDocker\VsToolsForDocker.csproj", "{9877B0FF-0B19-4725-A38F-AFEC54D5DC22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9877B0FF-0B19-4725-A38F-AFEC54D5DC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9877B0FF-0B19-4725-A38F-AFEC54D5DC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9877B0FF-0B19-4725-A38F-AFEC54D5DC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9877B0FF-0B19-4725-A38F-AFEC54D5DC22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAAB567E-5DCB-4A5E-B6A6-A059C8DBD9E9}
+	EndGlobalSection
+EndGlobal
