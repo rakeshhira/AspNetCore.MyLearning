@@ -132,3 +132,6 @@ The dockerfile Visual Studio had created is a multi-stage build and the debug co
 Well Visual Studio use volume mounting to provide debugging experience.  I noticed following command in the build output.
 > 1>docker run -dt -v "C:\Users\xyz\vsdbg\vs2017u5:/remote_debugger:rw" -v "D:\GitRepos\AspNetCore.MyLearning\VsToolsForDocker:/app" -v "C:\Users\xyz\.nuget\packages\:/root/.nuget/fallbackpackages2" -v "C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages" -e "DOTNET_USE_POLLING_FILE_WATCHER=1" -e "ASPNETCORE_ENVIRONMENT=Development" -e "NUGET_PACKAGES=/root/.nuget/fallbackpackages2" -e "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2" -P --entrypoint tail vstoolsfordocker:dev -f /dev/null
 
+## Need default .gitignore file to push work to git
+When I tried to stage my changes, I got error.  I had to follow the instruction below to create a default .gitignore file.
+https://stackoverflow.com/questions/47460039/vs-2017-git-local-commit-db-lock-error-on-every-commit/47472811
