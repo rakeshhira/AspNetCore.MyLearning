@@ -11,7 +11,7 @@ I followed the instructions in following article to create a visual studio proje
 
 - [Visual Studio Tools for Docker with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-2.1)
 
-Go ahead follow this article and then you compare your learning with mine.  I created the project as following
+If you had followed this article in the past, you can compare your learning with mine.  I created the project as following
 - Visual Studio 2017
 - **File** -> **New** -> **Project** -> **Visual C#** -> **Web** > **ASP.NET Core Web Application**
 - Set name of the project to **VsToolsForDocker**
