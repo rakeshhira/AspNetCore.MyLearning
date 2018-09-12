@@ -1,0 +1,48 @@
+version: '3.4'
+
+services:
+  aspnetcorewebapp1:
+    image: ${DOCKER_REGISTRY}aspnetcorewebapp1
+    build:
+      context: .
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+    depends_on:
+      - rabbitmq
+
+  aspnetcorewebapp2:
+    image: ${DOCKER_REGISTRY}aspnetcorewebapp2
+    build:
+      context: .
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+    depends_on:
+      - db
+      - rabbitmq
+
+  aspnetcorewebapp3:
+    image: ${DOCKER_REGISTRY}aspnetcorewebapp3
+    build:
+      context: .
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+    depends_on:
+      - redis
+      - rabbitmq
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: example
+
+  redis:
+      image: redis:alpine
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmq"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "my_secret_goes_here"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672" 

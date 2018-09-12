@@ -1,0 +1,355 @@
+========== Pulling Images ==========
+Pulling missing Docker images. To cancel this download, close the command prompt window. To disable image auto-pull, see Tools > Options > Container Tools.
+docker pull microsoft/dotnet:2.1-aspnetcore-runtime
+docker pull completed
+========== Preparing Containers ==========
+Getting Docker containers ready...
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -p dockercompose11329040220689028986 --no-ansi config
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+services:
+  aspnetcorewebapp1:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp1
+    ports:
+    - target: 80
+  aspnetcorewebapp2:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp2
+    ports:
+    - target: 80
+  aspnetcorewebapp3:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp3
+    ports:
+    - target: 80
+version: '3.4'
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -p dockercompose11329040220689028986 --no-ansi config
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+services:
+  aspnetcorewebapp1:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp1
+    ports:
+    - target: 80
+  aspnetcorewebapp2:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp2
+    ports:
+    - target: 80
+  aspnetcorewebapp3:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: aspnetcorewebapp3
+    ports:
+    - target: 80
+version: '3.4'
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -f "D:\GitRepos\AspNetCore.MyLearning\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose11329040220689028986 --no-ansi config
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+services:
+  aspnetcorewebapp1:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp1:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp1.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp1:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp2:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp2:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp2.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp2:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp3:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp3:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp3.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp3:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+version: '3.4'
+docker ps --filter "status=running" --filter "name=dockercompose11329040220689028986_aspnetcorewebapp1_" --format {{.ID}} -n 1
+docker ps --filter "status=running" --filter "name=dockercompose11329040220689028986_aspnetcorewebapp2_" --format {{.ID}} -n 1
+docker ps --filter "status=running" --filter "name=dockercompose11329040220689028986_aspnetcorewebapp3_" --format {{.ID}} -n 1
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -f "D:\GitRepos\AspNetCore.MyLearning\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose11329040220689028986 --no-ansi build 
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+Building aspnetcorewebapp2
+Step 1/3 : FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+ ---> 251f1045c425
+Step 2/3 : WORKDIR /app
+ ---> Running in f68119c5e189
+Removing intermediate container f68119c5e189
+ ---> 8066ffe4da2d
+Step 3/3 : EXPOSE 80
+ ---> Running in bfb9b6332ef6
+Removing intermediate container bfb9b6332ef6
+ ---> 663aedd99e3d
+Successfully built 663aedd99e3d
+Successfully tagged aspnetcorewebapp2:dev
+Building aspnetcorewebapp3
+Step 1/3 : FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+ ---> 251f1045c425
+Step 2/3 : WORKDIR /app
+ ---> Using cache
+ ---> 8066ffe4da2d
+Step 3/3 : EXPOSE 80
+ ---> Using cache
+ ---> 663aedd99e3d
+Successfully built 663aedd99e3d
+Successfully tagged aspnetcorewebapp3:dev
+Building aspnetcorewebapp1
+Step 1/3 : FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+ ---> 251f1045c425
+Step 2/3 : WORKDIR /app
+ ---> Using cache
+ ---> 8066ffe4da2d
+Step 3/3 : EXPOSE 80
+ ---> Using cache
+ ---> 663aedd99e3d
+Successfully built 663aedd99e3d
+Successfully tagged aspnetcorewebapp1:dev
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -f "D:\GitRepos\AspNetCore.MyLearning\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose11329040220689028986 --no-ansi config
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+services:
+  aspnetcorewebapp1:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp1:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp1.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp1:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp2:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp2:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp2.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp2:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp3:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp3:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp3.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp3:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+version: '3.4'
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -f "D:\GitRepos\AspNetCore.MyLearning\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose11329040220689028986 --no-ansi config
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+services:
+  aspnetcorewebapp1:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp1/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp1:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp1.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp1:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp2:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp2/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp2:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp2.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp2:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+  aspnetcorewebapp3:
+    build:
+      context: D:\GitRepos\AspNetCore.MyLearning
+      dockerfile: AspNetCoreWebApp3/Dockerfile
+      target: base
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: aspnetcorewebapp3:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.1/AspNetCoreWebApp3.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    volumes:
+    - D:\GitRepos\AspNetCore.MyLearning\AspNetCoreWebApp3:/app:rw
+    - C:\Users\usd46625\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\usd46625\.nuget\packages:/root/.nuget/packages:ro
+version: '3.4'
+docker-compose  -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.yml" -f "D:\GitRepos\AspNetCore.MyLearning\docker-compose.override.yml" -f "D:\GitRepos\AspNetCore.MyLearning\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose11329040220689028986 --no-ansi up -d --no-build --force-recreate --remove-orphans
+The DOCKER_REGISTRY variable is not set. Defaulting to a blank string.
+Creating network "dockercompose11329040220689028986_default" with the default driver
+Creating dockercompose11329040220689028986_aspnetcorewebapp3_1 ... 
+Creating dockercompose11329040220689028986_aspnetcorewebapp1_1 ... 
+Creating dockercompose11329040220689028986_aspnetcorewebapp2_1 ... 
+Creating dockercompose11329040220689028986_aspnetcorewebapp2_1 ... done
+Creating dockercompose11329040220689028986_aspnetcorewebapp1_1 ... done
+Creating dockercompose11329040220689028986_aspnetcorewebapp3_1 ... done
+Done!  Docker containers are ready.
