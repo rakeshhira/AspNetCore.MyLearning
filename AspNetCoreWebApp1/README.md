@@ -145,8 +145,6 @@ The docker-compose for [rabbitmq](https://hub.docker.com/_/rabbitmq/) looks like
 	ports:
 	  - "15672:15672"
 	  - "5672:5672"
-	volumes:
-	  - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
 ```
 - `image:rabbitmq:3-management` The `rabbitmq` service uses public [rabbitmq](https://hub.docker.com/_/redis/) image pulled from the Docker Hub registry.  The `3-management` tagged image is build on top of rabbitmq:3.7 and adds management plugin. 
 - `hostname: "rabbitmq"` RabbitMQ stores data based on what it calls the "Node Name" which defaults to the hostname. So that we don't get a random hostname, `rabbitmq` service assigns a hostname of `rabbitmq`.
@@ -157,5 +155,3 @@ The docker-compose for [rabbitmq](https://hub.docker.com/_/rabbitmq/) looks like
 - `ports:`
   - `"15672:15672"` The management plugin is available on default container port 15762.  It is exposed to host at the same port.
   - `"5672:5672"` The RabbitMQ listens on default container port 5762.  It is exposed to host at the same port.
-- `volumes`:
-  - `"./enabled_plugins:/etc/rabbitmq/enabled_plugins"` 
