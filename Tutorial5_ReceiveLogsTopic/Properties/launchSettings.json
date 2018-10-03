@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Tutorial5_ReceiveLogsTopic": {
+      "commandName": "Project",
+      "commandLineArgs": "\"kern.*\" \"*.critical\""
+    }
+  }
+}

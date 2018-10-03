@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Tutorial5_EmitLogTopic": {
+      "commandName": "Project",
+      "commandLineArgs": "\"kern.critical\" \"A critical kernal error\""
+    }
+  }
+}

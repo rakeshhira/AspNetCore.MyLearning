@@ -1,161 +1,99 @@
-# Add Docker Compose Support
-My aim was to create three web apis with one depending upon postgres, another depending upon redis and all depending upon rabbitmq.
+# Integrate RabbitMQ
 
-Articles used:
-- I used following article to get an overview of docker compose
-	- [compose overview](https://docs.docker.com/compose/overview/)
-- I used following article to add docker compose support
-  - [Add container orchestrator support to an app](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-2.1#add-container-orchestrator-support-to-an-app)
-- I used following article to install PostgreSQL on Docker
-	- [Docker Hub postgres](https://hub.docker.com/_/postgres/)
-- I used following article to install Redis on Docker
-	- [Docker Hub redis](https://hub.docker.com/_/redis/)
-- I used following article to install RabbitMQ on Docker
-	- [Docker Hub rabbitmq](https://hub.docker.com/_/rabbitmq/)
-	- https://github.com/micahhausler/rabbitmq-compose
-	- [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
+My goal was to integrate rabbitmq with the three web api(s) that had been created in [Branch: Add-Docker-Compose](https://github.com/rakeshhira/AspNetCore.MyLearning/blob/add-docker-compose/AspNetCoreWebApi1/README.md).
 
-Visual studio started the initial docker compose file with support for three web api's and then I added support for redis, postgres and rabbitmq.  Following is the final docker compose.
+Specifically, I wanted to implement following workflow
+- Send message to AspNetCoreWebApi1
+- Set up AspNetCoreWebApi1 to issue receiept of message after message has been successfully persisted but yet not processed by AspNetCoreWebApi2 and AspNetCoreWebApi3
+- Check status of message processing by contacting AspNetCoreWebApi1
 
-```
-version: '3.4'
+I used following article to learn rabbitmq
+- [AMQP 0-9-1 Model](http://www.rabbitmq.com/tutorials/amqp-concepts.html)
+- [Hello World Tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html)
+- [Worker Queues Tutorial](https://www.rabbitmq.com/tutorials/tutorial-two-dotnet.html)
+- [Publish/Subscribe Tutorial](https://www.rabbitmq.com/tutorials/tutorial-three-dotnet.html)
+- [Routing Tutorial](https://www.rabbitmq.com/tutorials/tutorial-four-dotnet.html)
+- [Topics Tutorial](https://www.rabbitmq.com/tutorials/tutorial-five-dotnet.html)
+- [RPC Tutorial](https://www.rabbitmq.com/tutorials/tutorial-RPC-dotnet.html)
+- [DotNetCore Logging](https://www.blinkingcaret.com/2018/02/14/net-core-console-logging/)
+- [Dependency Injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.1)
 
-services:
-  aspnetcorewebapp1:
-	image: ${DOCKER_REGISTRY}aspnetcorewebapp1
-	build:
-	  context: .
-	  dockerfile: AspNetCoreWebApp1/Dockerfile
-	depends_on:
-	  - rabbitmq
+# Concepts I learned
 
-  aspnetcorewebapp2:
-	image: ${DOCKER_REGISTRY}aspnetcorewebapp2
-	build:
-	  context: .
-	  dockerfile: AspNetCoreWebApp2/Dockerfile
-	depends_on:
-	  - db
-	  - rabbitmq
+## AMQP 0-9-1 Protocol
+RabbitMQ speaks [multiple protocols](http://www.rabbitmq.com/protocols.html).  AMQP 0-9-1 is one such protocol for messaging.
 
-  aspnetcorewebapp3:
-	image: ${DOCKER_REGISTRY}aspnetcorewebapp3
-	build:
-	  context: .
-	  dockerfile: AspNetCoreWebApp3/Dockerfile
-	depends_on:
-	  - redis
-	  - rabbitmq
+Concept | Notes | 
+------- |-------|
+AMQP 0-9-1 Model | AMQP 0-9-1 (Advanced Message Queing Protocol) is a messaging protocal that enables conforming client applications to communicate with conforming messaging middleware brokers. Messages are published to *exchanges*, which are often compared to post offices or mailboxes.  Exchanges then distribute message copies to *queues* using rules called *bindings*.  The AMQP brokers either deliver messages to consumers subscribed to queues, or consumers fetch/pull messages from queues on demand.
+Post Office Analogy | RabbitMQ can be thought as a post office: when you put the mail that you want posting in a post box, you can be sure that Mr./Ms. Mailperson will eventually deliver the mail to the receipient.  In this analogy, RabbitMQ is a post box, a post office and a postman.  
 
-  db:
-	image: postgres
-	environment:
-	  POSTGRES_PASSWORD: example
+`AMQP 0-9-1 Entities:`
+Queues, exchanges and bindings are collectively referred as AMQP entities.
 
-  redis:
-	  image: redis:alpine
+Concept | Notes | 
+------- |-------|
+Producer | A program that sends message is a producer
+Consumer | A program that waits to receive messages.
+Broker | A program that receive messages from publishers and route them to consumers
+Queue | A queue is the name for a post box that is used to store messages.
+Exchange | Exchanges are where messages are sent.  Exchange takes a message and route it into zero or more queues.
+Bindings | Bindings are rules used by the exchange to copy messages to queues.
 
-  rabbitmq:
-	image: "rabbitmq:3-management"
-	hostname: "rabbitmq"
-	environment:
-	  RABBITMQ_ERLANG_COOKIE: "my_secret_goes_here"
-	  RABBITMQ_DEFAULT_USER: "rabbitmq"
-	  RABBITMQ_DEFAULT_PASS: "rabbitmq"
-	  RABBITMQ_DEFAULT_VHOST: "/"
-	ports:
-	  - "15672:15672"
-	  - "5672:5672"
-```
+`AMQP 0-9-1 Programmable Protocol:`
+The entities and routing schemes are primarily defined by the applications themselves and not a broker administrator.  So declaring queues, exchanges, defining bindings between them, subscribe to queue etc. are all programmable.
 
-## What did i learn?
+Concept | Notes | 
+------- |-------|
+Exchange Types | AMQP 0-9-1 provides fourt exchange types: Direct, Fanout, Topic, Headers
+Exchange Attributes | In addition to exchange type, an exchange is declared with number of attributes like Name, Durability, Auto-delete, Arguments
+Default Exchange | The default exchange is a direct exchange with no name pre-declared by the broker.  It has a special property where every queue created is automatically bound to a routing key which is same as the queue name.
+Direct Exchange | A direct exchange delivers messags to queues based on the message routing key.  Ideal of unicast routing of messages.  It is often used to distribute tasks between multiple workers in a round robin manner.
+Fanout Exchange | A fanout exchange routes message to all queues that are bound to it and the routing key is ignored.  Ideal of broadcast routing of messages.
+Topic Exchange | Topic exchange route messages to one or more queues based on matching between a message routing key and the pattern that was used to bind a queue to an exchange.  Ideal of pub/sub pattern to multicast routing of messages.
+Headers Exchange | A headers exchange is designed for routing on multiple attributes that are more easily expressed as message headers than a routing key.
+Queue Name | Applications may pick queue names or ask the broker to generate a name for them.
+Queue Durability | Durable queues are persisted to disk and thus survive broken restarts.  Durability of a queue does not make *messages* that are routed to that queue durable.  Only *persistent* messages are recovered upon broker restart. 
+Message Durability | Durable messages are persisted to disk and thus survive broken restarts. 
 
-### Syntax
-In [YAML syntax](http://yaml.org/spec/1.2/spec.html) 
-- Colon is used to define key:value pair.
-- Indentation is used to define block or objects.
+`AMQP 0-9-1 Methods:`
+AMQP 0-9-1 is structured as a number of *methods*.  AMQP methods are groupped into *classes*.
 
-### Keywords
-#### version
-The default docker-compose.yml file created by visual studio has version 3.4.  There are several [version of docker compose file](https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix)
+Concept | Notes | 
+------- |-------|
+*exchange* class | Has methods: exchange.declare, exchange.declare-ok, exchange.delete, exchange.delete-ok
+*queue* class | queue.declare, queue.declare-ok
 
-#### services 
-`services:` keyword is used to define service definition of each container.  
+`AMQP Connections, Channels, Virtual Hosts:`
+
+Concept | Notes | 
+------- |-------|
+Connections |  Connections are typically long-lived.  AMQP is an application level protocol that uses TCP for reliable delivery.  AMQP connections use authentication and can be protected using TLS(SSL).  
+Channels | Some applications need multiple connections to an AMQP broker.  AMQP 0-9-1 connections are multiplexed and channels can be thought as lightweight connections that share a single TCP connection.
+Virtual Hosts | Virtual hosts make it possible to host multiple isolated environments (users, exchanges, queues, etc.) by single broker.
+
+## Consumer Acks & Publisher Confirms
+Since protocol methods (messages) sent are not guaranteed to reach the peer or be successfully processed by it, both publishers and consumers need a mechanism for delivery and processing confirmation.
+
+Concept | Notes | 
+------- |-------|
+Consumer Delivery Acks | Using `basic.consume` or `basic.get` a consuming application can register for either automatic ack or manual ack.  In automatic ack mode, a message is considered successfully delivered immediately after it is sent.  Ideal of higher throughput.  This is 'fire-and-forget' and is considered unsafe.
+Delivery Tags | Messages delivered carry a *delivery tag*, which uniquely identifies the delivery on a channel.  Delivery tags are scoped per channel
+`basic.ack` |  `basic.ack` is used for explicit positive acknowledgements.  This instructs RabbitMQ to record a message as delivered and can be discarded.
+`basic.nack` |  `basic.nack` is used for explicit negative acknowledgements.  
+`basic.reject` |  `basic.reject` is used for negative acknowledgements.  This instructs RabbitMQ to record a message was not processed but still should be deleted.
+requeuing | Consumer can requeue a message when using `basic.reject` and `basic.nack`.  
+number of redeliveries | Requeuing can lead of requeue/redelivery loop.  Consumer implementations can track the number of redeliveries and reject messages or schedule requeuing after a delay.
+`basic.qos` | Due to async protocol, there can be more than one message "in flight" on a channel at any given moment. The number of unacknowledged messages can be capped by using `basic.qos` method.
+`redeliver` | When manual ack are used, any delivery that was not acked is automatically requeued when the channel is closed.  Redeliveries have special boolean property `redeliver`, set to `true`.  Consumer should handle messages as idempotence.
+Publisher Confirms | Publisher confirm mechanism ensures that message was saved by RabbitMQ.  
+`confirm.select` | To enable publisher confirms, client sends `confirm.select` method.  This puts the channel in `confirm` mode.  In this mode, both the client and broker count messages (starts at 1).  The broker confirms messages by sending `basic.ack` with `delivery-tag` set to sequence number of confirmed message.
 
 
-#### Service/container name keyword
-The first indentation level under the `services:` defines the service/container names.  The default compose file has 3 services.
 
-#### image
-[`image`](https://docs.docker.com/compose/compose-file/#image) keyword specify the image to start the container from.  
-- $\{DOCKER_REGISTRY\} is an enviroment variable.
-- It is typically empty for dev env.
-- It is set to docker registry for public images
- 
-#### build
-[`build`](https://docs.docker.com/compose/compose-file/#build) keyword specify the options applied at build time.  It specifies the context, dockerfile and args.  Compose names the build image per the `image` keyword.
- 
-#### context
-[`context`](https://docs.docker.com/compose/compose-file/#context) keyword specify the path to directory containing dockerfile.
- 
-#### dockerfile
-[`dockerfile`](https://docs.docker.com/compose/compose-file/#dockerfile) keyword specify the alternate file to build with.
+## RabbitMQ Management
+[RabbitMQ Management](http://www.rabbitmq.com/management.html) frontend and HTTP API is implemented as a plugin on top of AMQP 0-9-1 protocol.
 
-#### environment
-[`environment`](https://docs.docker.com/compose/compose-file/#environment) keyword specifies the environment variables
+## RabbitMQ .NET Client
+[RabbitMQ .NET Client](http://www.rabbitmq.com/dotnet.html) is an implementation of AMQP 0-9-1 client library for C# .
 
-#### ports
-[`ports`](https://docs.docker.com/compose/compose-file/#ports) keyword exposes / maps ports.
-
-#### depends_on
-[`depends_on`](https://docs.docker.com/compose/compose-file/#depends_on) keyword expresses dependencies between services
-
-### Adding Postgres, Redis and Rabbitmq
-#### Postgres
-The docker-compose for [postgres](https://hub.docker.com/_/postgres/) looks like following:
-```
-  db:
-	image: postgres
-	environment:
-	  POSTGRES_PASSWORD: example
-```
-- `image:postgres` The `db` service uses public [postgres](https://hub.docker.com/_/postgres/) image pulled from the Docker Hub registry
-- `environment` Adds one or more environment varialbes
-  - `POSTGRES_PASSWORD: example` Sets superuser password for PostgreSQL.  The default superuser is defined by the `POSTGRES_USER` environment variable.  The default user is `postgres`.
-
-#### redis
-The docker-compose for [redis](https://hub.docker.com/_/redis/) looks like following:
-```
-  redis:
-	  image: redis:alpine
-```
-- `image:redis:aline` The `redis` service uses public [redis](https://hub.docker.com/_/redis/) image pulled from the Docker Hub registry
-
-#### rabbitmq
-The docker-compose for [rabbitmq](https://hub.docker.com/_/rabbitmq/) looks like following:
-```
-  rabbitmq:
-	image: "rabbitmq:3-management"
-	hostname: "rabbitmq"
-	environment:
-	  RABBITMQ_ERLANG_COOKIE: "my_secret_goes_here"
-	  RABBITMQ_DEFAULT_USER: "rabbitmq"
-	  RABBITMQ_DEFAULT_PASS: "rabbitmq"
-	  RABBITMQ_DEFAULT_VHOST: "/"
-	ports:
-	  - "15672:15672"
-	  - "5672:5672"
-	volumes:
-	  - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
-```
-- `image:rabbitmq:3-management` The `rabbitmq` service uses public [rabbitmq](https://hub.docker.com/_/redis/) image pulled from the Docker Hub registry.  The `3-management` tagged image is build on top of rabbitmq:3.7 and adds management plugin. 
-- `hostname: "rabbitmq"` RabbitMQ stores data based on what it calls the "Node Name" which defaults to the hostname. So that we don't get a random hostname, `rabbitmq` service assigns a hostname of `rabbitmq`.
-- `RABBITMQ_ERLANG_COOKIE: "my_secret_goes_here"` The `RABBITMQ_ERLANG_COOKIE` environment variable is used to set a consistent cookie to allow RabbitMQ nodes and CLI tools to communicate with each other.
-- `RABBITMQ_DEFAULT_USER: "rabbitmq"` The RABBITMQ_DEFAULT_USER envinronment variable changes the default  username from "guest" to "rabbitmq"
-- `RABBITMQ_DEFAULT_PASS: "rabbitmq"` The RABBITMQ_DEFAULT_PASS envinronment variable changes the default  password from "guest" to "rabbitmq"
-- `RABBITMQ_DEFAULT_VHOST: "/"`  The RABBITMQ_DEFAULT_VHOST environment variable changes the default vhost.
-- `ports:`
-  - `"15672:15672"` The management plugin is available on default container port 15762.  It is exposed to host at the same port.
-  - `"5672:5672"` The RabbitMQ listens on default container port 5762.  It is exposed to host at the same port.
-- `volumes`:
-  - `"./enabled_plugins:/etc/rabbitmq/enabled_plugins"` 
