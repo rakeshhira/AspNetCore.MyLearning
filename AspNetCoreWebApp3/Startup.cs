@@ -1,41 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreWebCommon;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using RabbitMQ.Client.Wrapper;
 
 namespace AspNetCoreWebApp3
 {
-	public class Startup
+	public class Startup : StartupJsonProvider
 	{
-		public Startup(IConfiguration configuration)
+		public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
+			: base(configuration, loggerFactory)
 		{
-			Configuration = configuration;
 		}
-
-		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices(IServiceCollection services)
+		override public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			base.ConfigureServices(services);
+
+			if (EnableRabbitMQ)
+			{
+				services.AddSingleton<RabbitMQConsumer, RabbitMQConsumer>();
+			}
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		override public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
+			base.Configure(app, env);
 
-			app.UseMvc();
+			if (EnableRabbitMQ)
+			{
+				RabbitMQConsumer rabbitMQConsumer = app.ApplicationServices.GetRequiredService<RabbitMQConsumer>();
+
+				var applicationLifetime = app.ApplicationServices.GetService<IApplicationLifetime>();
+				applicationLifetime.ApplicationStarted.Register(() =>
+				{
+					rabbitMQConsumer.Register();
+				});
+			}
 		}
 	}
 }

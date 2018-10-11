@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using RabbitMQ.Client.Wrapper;
 using RabbitMQ.Client.Wrapper.Abstractions;
 
-namespace AspNetCoreWebApp2.Controllers
+namespace AspNetCoreWebApp3.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]

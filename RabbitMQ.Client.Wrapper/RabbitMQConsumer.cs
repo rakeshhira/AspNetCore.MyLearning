@@ -10,6 +10,8 @@ namespace RabbitMQ.Client.Wrapper
 		private readonly ILogger<RabbitMQConsumer> _logger = null;
 		private readonly IRabbitMQConfig _rabbitMQConfig = null;
 		private readonly IRabbitMQClientWrapper _rabbitMQClientWrapper = null;
+		public static string LastReceivedMessage { get; private set; }
+		public static object _lock = new object();
 
 		public RabbitMQConsumer(ILogger<RabbitMQConsumer> logger, IRabbitMQConfig rabbitMQConfig, IRabbitMQClientWrapper rabbitMQClientWrapper)
 		{
@@ -29,6 +31,11 @@ namespace RabbitMQ.Client.Wrapper
 				var message80 = message.Substring(0, Math.Min(80, message.Length));
 
 				_logger.LogInformation($" {nameof(RabbitMQConsumer)}> [x] Received '{routingKey}':'{message80}'(80 char only)");
+
+				lock (_lock)
+				{
+					LastReceivedMessage = message;
+				}
 			};
 
 			_rabbitMQClientWrapper.BasicConsume();
