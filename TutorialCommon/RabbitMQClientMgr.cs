@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DotNetCoreCommon;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -93,6 +94,11 @@ namespace TutorialCommon
 			}
 		}
 
+		private void Model_BasicNacks(object sender, BasicNackEventArgs e)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public void BasicPublish(byte[] body)
 		{
 			BasicPublish(_rabbitMQConfig.BasicPublishConfig.RoutingKey, body);
@@ -113,7 +119,7 @@ namespace TutorialCommon
 				mandatory: false,
 				basicProperties: basicProperties,
 				body: body);
-			_logger.LogInformation($"BasicPublish completed: exchange={exchange}, routingKey={routingKey}, mandatory=false, basicProperties=null,body={body}");
+			_logger.LogInformation($"BasicPublish completed: exchange={exchange}, routingKey={routingKey}, mandatory=false, basicProperties=null,body={body} Utf8String='{body?.FromUtf8ToString()}'");
 		}
 
 		public void QueueBind(string routingKey)

@@ -1,0 +1,739 @@
+{
+	"resourceType": "Bundle",
+	"id": "d9c86883-f352-40b7-b454-f314219197d2",
+	"meta": {
+		"versionId": "b5910e3c-f559-409e-94d9-2a15cbcf0dba",
+		"lastUpdated": "2018-10-05T12:40:07.986+00:00"
+	},
+	"type": "searchset",
+	"total": 11545,
+	"link": [
+		{
+			"relation": "self",
+			"url": "http://vonk.fire.ly/"
+		},
+		{
+			"relation": "last",
+			"url": "http://vonk.fire.ly/?_skip=11540"
+		},
+		{
+			"relation": "next",
+			"url": "http://vonk.fire.ly/?_skip=10"
+		}
+	],
+	"entry": [
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/1175726e-d3e4-46b6-8b39-2fec0714c644",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "1175726e-d3e4-46b6-8b39-2fec0714c644",
+				"meta": {
+					"versionId": "e4cc8c16-3974-46bf-bbfe-0bef52691513",
+					"lastUpdated": "2018-10-05T12:23:44.955+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "CHH"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "1"
+						},
+						{
+							"system": "MEDICO/TagDiagnosisIsMedicalMain-1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037765"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "ENT"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "I21.4"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-NTDL0911"
+				},
+				"note": [
+					{
+						"text": "Akuter subendokardialer Myokardinfarkt"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/c0ec5ee5-2e44-46d4-8742-21cf7b426a04",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "c0ec5ee5-2e44-46d4-8742-21cf7b426a04",
+				"meta": {
+					"versionId": "df05cbe4-f32a-4da2-93f6-f28df5231a8d",
+					"lastUpdated": "2018-10-05T12:23:44.758+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "CHH"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "2"
+						},
+						{
+							"system": "MEDICO/TagDiagnosisIsDRGMain-1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037789"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "E10.11"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-CCM"
+				},
+				"note": [
+					{
+						"text": "Diabetes mellitus, Typ 1: Mit Ketoazidose: Als entgleist bezeichnet"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/5f8ecce3-0da7-48ab-a9f9-0ec1ae0dd377",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "5f8ecce3-0da7-48ab-a9f9-0ec1ae0dd377",
+				"meta": {
+					"versionId": "f29d0616-7bfe-4a77-bc7d-19543083bf6d",
+					"lastUpdated": "2018-10-05T11:48:34.848+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "INT"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "2"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037797"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2016",
+							"code": "A01.2"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2708368"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee--"
+				},
+				"note": [
+					{
+						"text": "Paratyphus B"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/40495f30-ca54-459a-ab79-ad5f57a0871c",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "40495f30-ca54-459a-ab79-ad5f57a0871c",
+				"meta": {
+					"versionId": "8d94aa91-df60-4720-8de6-f66b47f94b69",
+					"lastUpdated": "2018-10-05T11:18:38.67+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "INT"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037791"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2016",
+							"code": "A01.1"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2708368"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee--"
+				},
+				"note": [
+					{
+						"text": "Paratyphus A"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/adfd6a85-2aae-41e6-86ae-7aa09ec968ad",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "adfd6a85-2aae-41e6-86ae-7aa09ec968ad",
+				"meta": {
+					"versionId": "6a22b0d6-2216-4aa4-8e5d-6c94a3118b13",
+					"lastUpdated": "2018-10-05T11:01:45.456+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "CHH"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "3"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037790"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "H36.0"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-CCM"
+				},
+				"note": [
+					{
+						"text": "Retinopathia diabetica"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/580fcf8a-c533-4de6-9278-918e5ce6ef2c",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "580fcf8a-c533-4de6-9278-918e5ce6ef2c",
+				"meta": {
+					"versionId": "d33a6a48-9316-41c5-b581-464fbdd4be3f",
+					"lastUpdated": "2018-10-05T10:54:08.518+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "ORT"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "2"
+						},
+						{
+							"system": "MEDICO/TagDiagnosisIsMedicalMain-1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037764"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "ENT"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "S83.53"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-NTDL0911"
+				},
+				"note": [
+					{
+						"text": "Verstauchung und Zerrung des Kniegelenkes: Riss des vorderen Kreuzbandes"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/26accef3-38b5-4e23-a8d3-245425a2a2dd",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "26accef3-38b5-4e23-a8d3-245425a2a2dd",
+				"meta": {
+					"versionId": "2949d36e-ddb7-4e9d-94fb-6df06dece3be",
+					"lastUpdated": "2018-10-05T10:42:41.994+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "CHH"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037785"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "I20.0"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee--"
+				},
+				"note": [
+					{
+						"text": "Instabile Angina pectoris"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/6317f416-ea75-4265-8423-dc5c917fe6a5",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "6317f416-ea75-4265-8423-dc5c917fe6a5",
+				"meta": {
+					"versionId": "9093f6a3-7b1c-410a-8d3e-eed1ce17ea8b",
+					"lastUpdated": "2018-10-05T10:15:43.926+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "KAR"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037786"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2018",
+							"code": "R42"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2714022"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-CCM"
+				},
+				"note": [
+					{
+						"text": "Schwindel und Taumel"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Condition/44e6af31-73e0-44bc-a9e9-109f5a9d7e31",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "44e6af31-73e0-44bc-a9e9-109f5a9d7e31",
+				"meta": {
+					"versionId": "f32f31db-b5ab-4b5b-aca4-ae8ae9269d61",
+					"lastUpdated": "2018-10-05T08:34:28.527+00:00",
+					"security": [
+						{
+							"system": "MEDICO/TagSecurityDepartment-1",
+							"code": "IM"
+						}
+					],
+					"tag": [
+						{
+							"system": "MPC/TagDiagnosisSorting-1",
+							"code": "1"
+						}
+					]
+				},
+				"identifier": [
+					{
+						"system": "http://medico-emr.net/def/sid1/Diag",
+						"value": "5037781"
+					}
+				],
+				"verificationStatus": "confirmed",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "MEDICO/Category-1",
+								"code": "Diagnosis"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "MPC/DiagnosisType-1",
+							"code": "AUF"
+						},
+						{
+							"system": "MEDICO/BaseDiagnosisType-1",
+							"code": "other"
+						},
+						{
+							"system": "MPC/Diagnosis-1/ICD10_2016",
+							"code": "A01.1"
+						}
+					]
+				},
+				"subject": {
+					"reference": "http://vonk.fire.ly/Patient/Patient-0"
+				},
+				"context": {
+					"reference": "http://vonk.fire.ly/Encounter/Case-2707241"
+				},
+				"asserter": {
+					"reference": "http://vonk.fire.ly/Practitioner/Employee-CERNER"
+				},
+				"note": [
+					{
+						"text": "Paratyphus A"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://vonk.fire.ly/Patient/4d97c872-5f6f-48f7-bae1-98e459b7db1e",
+			"resource": {
+				"resourceType": "Patient",
+				"id": "4d97c872-5f6f-48f7-bae1-98e459b7db1e",
+				"meta": {
+					"versionId": "44ef48ba-0a07-4c3f-8d9b-171806eaca58",
+					"lastUpdated": "2018-10-04T22:08:12.664+00:00"
+				},
+				"extension": [
+					{
+						"url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+						"valueString": "SecondFamily6632e2c5-7f1c-445b-adb0-c8273306503a"
+					}
+				],
+				"identifier": [
+					{
+						"use": "secondary",
+						"type": {
+							"coding": [
+								{
+									"system": "SynapseId",
+									"code": "SynapseId"
+								}
+							]
+						},
+						"system": "SynapseId",
+						"value": "f596d8be-a3a8-472f-9305-16ed32758175"
+					}
+				],
+				"name": [
+					{
+						"use": "official",
+						"family": "Family2065ff62-02b9-4af3-8a25-d640ca70f578",
+						"given": [
+							"Given0c315f68-6ec4-436b-a1bc-97b121ecc42e",
+							"Second8968530d-5722-4f79-aa43-2d6bf33af722"
+						]
+					}
+				],
+				"gender": "male",
+				"birthDate": "1998-10-05"
+			},
+			"search": {
+				"mode": "match"
+			}
+		}
+	]
+}

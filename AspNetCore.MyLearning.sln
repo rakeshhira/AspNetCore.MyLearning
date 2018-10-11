@@ -34,11 +34,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial4_EmitLogDirect", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial4_ReceiveLogsDirect", "Tutorial4_ReceiveLogsDirect\Tutorial4_ReceiveLogsDirect.csproj", "{D4987DA9-C211-493E-90E3-A7709152EFC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial1_Sender", "Tutorial1_Sender\Tutorial1_Sender.csproj", "{42B78EEF-3DE0-4F96-B12A-5B61F8A96E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial1_Sender", "Tutorial1_Sender\Tutorial1_Sender.csproj", "{42B78EEF-3DE0-4F96-B12A-5B61F8A96E9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial5_EmitLogTopic", "Tutorial5_EmitLogTopic\Tutorial5_EmitLogTopic.csproj", "{4536E789-03EE-46EF-B933-C44C7A480052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial5_EmitLogTopic", "Tutorial5_EmitLogTopic\Tutorial5_EmitLogTopic.csproj", "{4536E789-03EE-46EF-B933-C44C7A480052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial5_ReceiveLogsTopic", "Tutorial5_ReceiveLogsTopic\Tutorial5_ReceiveLogsTopic.csproj", "{20F7E62E-B871-4310-8E24-5FB43804320D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial5_ReceiveLogsTopic", "Tutorial5_ReceiveLogsTopic\Tutorial5_ReceiveLogsTopic.csproj", "{20F7E62E-B871-4310-8E24-5FB43804320D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Client.Wrapper", "RabbitMQ.Client.Wrapper\RabbitMQ.Client.Wrapper.csproj", "{07B3A071-0EC5-4A18-813A-8721C74E59DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Client.Wrapper.Abstractions", "RabbitMQ.Client.Wrapper.Abstractions\RabbitMQ.Client.Wrapper.Abstractions.csproj", "{CB0FDAA3-456D-4FB0-A538-FB3623A4EBD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreCommon", "DotNetCoreHelper\DotNetCoreCommon.csproj", "{1374405A-3314-488F-BD30-A5D12F9234A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebCommon", "AspNetCoreWebHelper\AspNetCoreWebCommon.csproj", "{E187E0BE-A159-44CC-9E0E-A9B7E118F189}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_Sender", "AspNetCoreWeb_Sender\AspNetCoreWeb_Sender.csproj", "{79001991-7F93-4F0A-B953-7238FC6B21F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_Receiver", "AspNetCoreWeb_Receiver\AspNetCoreWeb_Receiver.csproj", "{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWeb_EmitLogTopic", "..\AspNetCoreWeb_EmitLogTopic\AspNetCoreWeb_EmitLogTopic.csproj", "{ADBA2500-4DFE-4145-99A8-B27F544CA226}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_ReceiveLogsTopic", "AspNetCoreWeb_ReceiveLogsTopic\AspNetCoreWeb_ReceiveLogsTopic.csproj", "{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +126,38 @@ Global
 		{20F7E62E-B871-4310-8E24-5FB43804320D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20F7E62E-B871-4310-8E24-5FB43804320D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20F7E62E-B871-4310-8E24-5FB43804320D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B3A071-0EC5-4A18-813A-8721C74E59DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B3A071-0EC5-4A18-813A-8721C74E59DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B3A071-0EC5-4A18-813A-8721C74E59DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B3A071-0EC5-4A18-813A-8721C74E59DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB0FDAA3-456D-4FB0-A538-FB3623A4EBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB0FDAA3-456D-4FB0-A538-FB3623A4EBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB0FDAA3-456D-4FB0-A538-FB3623A4EBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB0FDAA3-456D-4FB0-A538-FB3623A4EBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1374405A-3314-488F-BD30-A5D12F9234A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1374405A-3314-488F-BD30-A5D12F9234A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1374405A-3314-488F-BD30-A5D12F9234A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1374405A-3314-488F-BD30-A5D12F9234A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E187E0BE-A159-44CC-9E0E-A9B7E118F189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E187E0BE-A159-44CC-9E0E-A9B7E118F189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E187E0BE-A159-44CC-9E0E-A9B7E118F189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E187E0BE-A159-44CC-9E0E-A9B7E118F189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79001991-7F93-4F0A-B953-7238FC6B21F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79001991-7F93-4F0A-B953-7238FC6B21F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79001991-7F93-4F0A-B953-7238FC6B21F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79001991-7F93-4F0A-B953-7238FC6B21F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBA2500-4DFE-4145-99A8-B27F544CA226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBA2500-4DFE-4145-99A8-B27F544CA226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBA2500-4DFE-4145-99A8-B27F544CA226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBA2500-4DFE-4145-99A8-B27F544CA226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AspNetCoreWebApp2
+namespace AspNetCoreWeb_Sender
 {
 	public class Program
 	{

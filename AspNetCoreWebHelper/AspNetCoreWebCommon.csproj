@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetCoreHelper\DotNetCoreCommon.csproj" />
+    <ProjectReference Include="..\RabbitMQ.Client.Wrapper.Abstractions\RabbitMQ.Client.Wrapper.Abstractions.csproj" />
+    <ProjectReference Include="..\RabbitMQ.Client.Wrapper\RabbitMQ.Client.Wrapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>
