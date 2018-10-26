@@ -52,9 +52,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_Sender", "Asp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_Receiver", "AspNetCoreWeb_Receiver\AspNetCoreWeb_Receiver.csproj", "{0F6ABE3B-CE47-4DA9-B6B9-D988B1A4B545}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWeb_EmitLogTopic", "..\AspNetCoreWeb_EmitLogTopic\AspNetCoreWeb_EmitLogTopic.csproj", "{ADBA2500-4DFE-4145-99A8-B27F544CA226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_EmitLogTopic", "..\AspNetCoreWeb_EmitLogTopic\AspNetCoreWeb_EmitLogTopic.csproj", "{ADBA2500-4DFE-4145-99A8-B27F544CA226}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb_ReceiveLogsTopic", "AspNetCoreWeb_ReceiveLogsTopic\AspNetCoreWeb_ReceiveLogsTopic.csproj", "{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit_Sender", "MassTransit_Sender\MassTransit_Sender.csproj", "{D36E4933-99FF-4BA1-AB84-C8D66765F8A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit_Receiver", "MassTransit_Receiver\MassTransit_Receiver.csproj", "{1666B207-C7C0-4E6B-990C-64A783154B78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit_Messages", "MassTransit_Common\MassTransit_Messages.csproj", "{0AB82102-749F-41D5-ACE9-0646AEE2D5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransit_AspNetCore", "MassTransit_AspNetCore\MassTransit_AspNetCore.csproj", "{52C1CCA6-CD99-4A89-BF6D-61ED632AE0A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,6 +166,22 @@ Global
 		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D085F7E8-AA83-49BD-B5FC-E71EEC2968A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36E4933-99FF-4BA1-AB84-C8D66765F8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36E4933-99FF-4BA1-AB84-C8D66765F8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36E4933-99FF-4BA1-AB84-C8D66765F8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36E4933-99FF-4BA1-AB84-C8D66765F8A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1666B207-C7C0-4E6B-990C-64A783154B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1666B207-C7C0-4E6B-990C-64A783154B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1666B207-C7C0-4E6B-990C-64A783154B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1666B207-C7C0-4E6B-990C-64A783154B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB82102-749F-41D5-ACE9-0646AEE2D5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB82102-749F-41D5-ACE9-0646AEE2D5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB82102-749F-41D5-ACE9-0646AEE2D5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB82102-749F-41D5-ACE9-0646AEE2D5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52C1CCA6-CD99-4A89-BF6D-61ED632AE0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C1CCA6-CD99-4A89-BF6D-61ED632AE0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C1CCA6-CD99-4A89-BF6D-61ED632AE0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C1CCA6-CD99-4A89-BF6D-61ED632AE0A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

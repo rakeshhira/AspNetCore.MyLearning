@@ -46,3 +46,11 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672" 
+
+  masstransitaspnetcore:
+    image: ${DOCKER_REGISTRY}masstransitaspnetcore
+    build:
+      context: .
+      dockerfile: MassTransit_AspNetCore/Dockerfile
+    depends_on:
+      - rabbitmq
