@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: AspNetCoreWebApp2/Dockerfile
     depends_on:
-      - db
+      - postgres
       - rabbitmq
 
   aspnetcorewebapp3:
@@ -27,10 +27,29 @@ services:
       - redis
       - rabbitmq
 
-  db:
+  postgres:
     image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: example
+      #POSTGRES_USER: "postgres" #superuser 
+      POSTGRES_PASSWORD: "guest" #superuser password
+      #PGDATA : "/var/lib/postgres/data" #location for database files
+      #POSTGRES_DB: "postgres" # Default database name.  If not specified, POSTGRES_USER is used.
+      #POSTGRES_INITDB_ARGS: "--data-checksums" #Space separated string of arguments as postgres initdb would expect them
+      #POSTGRES_INITDB_WALDIR: "" #Postgres transaction log location.  Default to PGDATA folder.
+    ports:
+      - "5432:5432"
+
+  pgAdmin: #See https://info.crunchydata.com/blog/easy-postgresql-10-and-pgadmin-4-setup-with-docker
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin" # Administrator account to login to pgAdmin.
+      PGADMIN_DEFAULT_PASSWORD: "guest" # Password for administrator account to login to pgAdmin.
+      #PGADMIN_ENABLE_TLS: "" #If left un-set, the container listens on port 80 for connections in plain text. If set to any value, container listens on port 443 for TLS connections.
+    ports:
+      - "9002:80"
+    volumes:
+      - "D:/volumes/db_bkup:/db_bkup"
+      - "pga4volume:/var/lib/pgadmin"
 
   redis:
       image: redis:alpine
@@ -45,12 +64,7 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
     ports:
       - "15672:15672"
-      - "5672:5672" 
+      - "5672:5672"
 
-  masstransitaspnetcore:
-    image: ${DOCKER_REGISTRY}masstransitaspnetcore
-    build:
-      context: .
-      dockerfile: MassTransit_AspNetCore/Dockerfile
-    depends_on:
-      - rabbitmq
+volumes:
+  pga4volume:

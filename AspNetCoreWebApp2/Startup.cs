@@ -1,45 +1,39 @@
 ﻿using AspNetCoreWebCommon;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using RabbitMQ.Client.Wrapper;
+using Newtonsoft.Json.Linq;
+using Task = System.Threading.Tasks.Task;
 
 namespace AspNetCoreWebApp2
 {
-	public class Startup : StartupJsonProvider
+	public class Startup
 	{
-		public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
-			: base(configuration, loggerFactory)
+		private readonly IConfiguration _configuration;
+
+		public Startup(IConfiguration configuration)
 		{
+			_configuration = configuration;
 		}
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		override public void ConfigureServices(IServiceCollection services)
+		public void ConfigureServices(IServiceCollection services)
 		{
-			base.ConfigureServices(services);
-
-			if (EnableRabbitMQ)
-			{
-				services.AddSingleton<RabbitMQConsumer, RabbitMQConsumer>();
-			}
+			StartupHelper.ConfigureServices(services, _configuration, typeof(JObjectConsumer));
 		}
 
-		override public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			base.Configure(app, env);
+			StartupHelper.Configure(app, env, _configuration);
+		}
+	}
 
-			if (EnableRabbitMQ)
-			{
-				RabbitMQConsumer rabbitMQConsumer = app.ApplicationServices.GetRequiredService<RabbitMQConsumer>();
-
-				var applicationLifetime = app.ApplicationServices.GetService<IApplicationLifetime>();
-				applicationLifetime.ApplicationStarted.Register(() =>
-				{
-					rabbitMQConsumer.Register();
-				});
-			}
+	public class JObjectConsumer : IConsumer<JObject>
+	{
+		Task IConsumer<JObject>.Consume(ConsumeContext<JObject> context)
+		{
+			return Task.CompletedTask;
 		}
 	}
 }

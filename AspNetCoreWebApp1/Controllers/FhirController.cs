@@ -1,11 +1,7 @@
-﻿using DotNetCoreCommon;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+﻿using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using RabbitMQ.Client.Wrapper.Abstractions;
 
 namespace AspNetCoreWebApp1.Controllers
 {
@@ -14,13 +10,12 @@ namespace AspNetCoreWebApp1.Controllers
 	public class FhirController : ControllerBase
 	{
 		readonly ILogger _logger = null;
-		readonly IRabbitMQClientWrapper _rabbitMQClientWarpper = null;
-		const string FhirDataType = "fhir";
+		readonly IBus _bus = null;
 
-		public FhirController(ILogger<FhirController> logger, IRabbitMQClientWrapper rabbitMQClientWarpper)
+		public FhirController(ILogger<FhirController> logger, IBus bus)
 		{
 			_logger = logger;
-			_rabbitMQClientWarpper = rabbitMQClientWarpper;
+			_bus = bus;
 		}
 
 		[HttpPost]
@@ -29,32 +24,7 @@ namespace AspNetCoreWebApp1.Controllers
 			JObject jObject = fhirResourceJObect as JObject;
 			_logger.LogDebug($"{nameof(Publish)} called.  {nameof(fhirResourceJObect)}={fhirResourceJObect}");
 
-			IElementNavigator elementNavigator = JsonDomFhirNavigator.Create(jObject);
-			var fhirParser = new FhirJsonParser();
-
-			JToken resourceTypeJToken = jObject["resourceType"];
-			Resource resource = null;
-			switch (resourceTypeJToken.ToString())
-			{
-				case "Bundle":
-					resource = fhirParser.Parse<Bundle>(elementNavigator);
-					break;
-				case "Patient":
-					resource = fhirParser.Parse<Patient>(elementNavigator);
-					break;
-				case "observation":
-					resource = fhirParser.Parse<Observation>(elementNavigator);
-					break;
-				default:
-					break;
-			}
-			string topic = BuildTopic(resource);
-			_rabbitMQClientWarpper.BasicPublish(topic, jObject.ToString().ToUtf8Bytes());
-		}
-
-		private string BuildTopic(Resource resource)
-		{
-			return $"{FhirDataType}.{resource.ResourceType.ToString()}";
+			_bus.Publish<JObject>(jObject);
 		}
 	}
 }

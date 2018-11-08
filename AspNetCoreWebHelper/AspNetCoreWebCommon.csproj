@@ -20,8 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNetCoreHelper\DotNetCoreCommon.csproj" />
-    <ProjectReference Include="..\RabbitMQ.Client.Wrapper.Abstractions\RabbitMQ.Client.Wrapper.Abstractions.csproj" />
-    <ProjectReference Include="..\RabbitMQ.Client.Wrapper\RabbitMQ.Client.Wrapper.csproj" />
+    <ProjectReference Include="..\MassTransit.Wrapper\MassTransit.Wrapper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

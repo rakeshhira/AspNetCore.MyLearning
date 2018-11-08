@@ -1,30 +1,39 @@
-﻿using AspNetCoreWebCommon;
+﻿using System.Threading.Tasks;
+using AspNetCoreWebCommon;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace AspNetCoreWebApp1
 {
-	public class Startup : StartupJsonProvider
+	public class Startup
 	{
-		public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
-			: base(configuration, loggerFactory)
+		private readonly IConfiguration _configuration;
+
+		public Startup(IConfiguration configuration)
 		{
+			_configuration = configuration;
 		}
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		override public void ConfigureServices(IServiceCollection services)
+		public void ConfigureServices(IServiceCollection services)
 		{
-			base.ConfigureServices(services);
-			// add code here
+			StartupHelper.ConfigureServices(services, _configuration, typeof(JObjectFaultConsumer));
 		}
 
-		override public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			base.Configure(app, env);
-			// add code here
+			StartupHelper.Configure(app, env, _configuration);
+		}
+	}
+
+	public class JObjectFaultConsumer : IConsumer<Fault<JObject>>
+	{
+		Task IConsumer<Fault<JObject>>.Consume(ConsumeContext<Fault<JObject>> context)
+		{
+			return Task.CompletedTask;
 		}
 	}
 }
